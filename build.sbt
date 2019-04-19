@@ -6,8 +6,20 @@ ThisBuild / organization := "eu.frlab"
 ThisBuild / organizationName := "FRLab"
 
 lazy val root = (project in file("."))
+  .aggregate(helper, main)
   .settings(
-    name := "sbt-playground",
+    name := "sbt-playground"
+  )
+
+lazy val helper = (project in file("helper"))
+  .settings(
+    name := "sbt-playground-helper",
+  )
+
+lazy val main = (project in file("main"))
+  .dependsOn(helper)
+  .settings(
+    name := "sbt-playground-main",
     libraryDependencies += scalaTest % Test
   )
 

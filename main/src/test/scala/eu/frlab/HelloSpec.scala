@@ -1,4 +1,4 @@
-package example
+package eu.frlab
 
 import org.scalatest._
 
