@@ -1,12 +1,17 @@
 package eu.frlab
 
-import scala.io.{BufferedSource, Source}
+import scala.io.Source
 
 object Hello extends Greeting with App {
 
-  private val source: BufferedSource = Source.fromResource("name.txt")
-  val name: String = source.getLines().next()
-  source.close()
+  val ConfigurationFile = "name.txt"
 
-  println(greet(name))
+  val source = Source.fromResource(ConfigurationFile)
+  try {
+    val name: String = source.getLines().mkString(" ")
+    println(greet(name))
+  } finally {
+    source.close()
+  }
+
 }

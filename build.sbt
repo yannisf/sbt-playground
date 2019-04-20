@@ -7,8 +7,10 @@ ThisBuild / organizationName := "FRLab"
 
 lazy val root = (project in file("."))
   .aggregate(helper, main)
+//  .enablePlugins(JavaAppPackaging)
   .settings(
-    name := "sbt-playground"
+    name := "sbt-playground",
+//    maintainer := "yannis@ianos"
   )
 
 lazy val helper = (project in file("helper"))
